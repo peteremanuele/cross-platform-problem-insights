@@ -1,20 +1,75 @@
-[
-  {
-    "topic": "bathroom exhaust fan replacement",
-    "youtube_velocity": 0.4687,
-    "trends_growth": 0.7321,
-    "score": 0.5872
+{
+  "meta": {
+    "run_at": "2026-05-09T20:10:38Z",
+    "topic_count": 10,
+    "weight_youtube": 0.55,
+    "weight_trends": 0.45,
+    "trends_sleep_s": 20,
+    "trends_timeframe": "today 3-m",
+    "trends_geo": "US",
+    "yt_window_days": 365,
+    "yt_results_per_topic": 10
   },
-  {
-    "topic": "garage door not closing",
-    "youtube_velocity": 0.4396,
-    "trends_growth": 0.7141,
-    "score": 0.5631
-  },
-  {
-    "topic": "water heater making noise",
-    "youtube_velocity": 0.4821,
-    "trends_growth": 0.5507,
-    "score": 0.513
-  }
-]
+  "results": [
+    {
+      "topic": "circuit breaker tripping",
+      "youtube_velocity": 0.5959,
+      "trends_growth": 0.834,
+      "score": 0.703
+    },
+    {
+      "topic": "toilet running constantly",
+      "youtube_velocity": 0.4572,
+      "trends_growth": 0.9998,
+      "score": 0.7014
+    },
+    {
+      "topic": "HVAC filter replacement",
+      "youtube_velocity": 0.5842,
+      "trends_growth": 0.6455,
+      "score": 0.6118
+    },
+    {
+      "topic": "bathroom exhaust fan replacement",
+      "youtube_velocity": 0.5012,
+      "trends_growth": 0.7311,
+      "score": 0.6047
+    },
+    {
+      "topic": "garage door not closing",
+      "youtube_velocity": 0.4396,
+      "trends_growth": 0.7145,
+      "score": 0.5633
+    },
+    {
+      "topic": "drywall hole repair",
+      "youtube_velocity": 0.5507,
+      "trends_growth": 0.5683,
+      "score": 0.5586
+    },
+    {
+      "topic": "water heater making noise",
+      "youtube_velocity": 0.4821,
+      "trends_growth": 0.5511,
+      "score": 0.5132
+    },
+    {
+      "topic": "exterior door weatherstripping",
+      "youtube_velocity": 0.4929,
+      "trends_growth": 0.307,
+      "score": 0.4092
+    },
+    {
+      "topic": "roof shingle damage assessment",
+      "youtube_velocity": 0.4856,
+      "trends_growth": 0.0,
+      "score": 0.2671
+    },
+    {
+      "topic": "leaking shower grout fix",
+      "youtube_velocity": 0.4034,
+      "trends_growth": 0.0,
+      "score": 0.2219
+    }
+  ]
+}
