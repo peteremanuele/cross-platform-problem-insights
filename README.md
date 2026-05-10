@@ -1,46 +1,32 @@
-# Cross Platform Problem Insights
+# Home Repair Trend Pipeline
 
-This project analyzes public discussions across platforms to identify recurring problems, emerging topics, and high-interest "how-to" questions.
-
-The goal is to better understand what issues people are actively trying to solve, and to use those insights to inform the creation of clearer, more useful educational content.
+Early-stage research pipeline for identifying emerging and seasonal home repair topics using lightweight public signals.
 
 ---
 
 ## Overview
 
-Many platforms contain fragmented signals about real-world problems:
+Online communities often contain fragmented signals about real-world problems and recurring "how-to" questions.
 
-* Reddit → raw questions and discussions
-* YouTube → solution demand and engagement
-* Google Trends → timing and search interest
+This project explores whether lightweight cross-platform public signals can help provide additional context around discussions occurring within DIY and home improvement communities.
 
-This project combines those signals to detect patterns such as:
+Examples of those signals include:
 
-* Frequently asked "how to fix" questions
-* Rapidly increasing problem topics
-* Seasonal or recurring issues
+- **Reddit** → recurring questions and problem discussions
+- **YouTube** → engagement with repair and tutorial content
+- **Google Trends** → broader search interest and seasonality
 
----
-
-## Data Sources
-
-This project uses publicly available data from:
-
-* Reddit (limited to selected subreddits and metadata only)
-* YouTube (public video metadata)
-* Google Trends (aggregated search interest)
-
-The system is designed to operate within API usage limits and platform policies.
+The goal is to better understand when recurring Reddit discussions may reflect broader emerging, seasonal, or high-interest practical problems.
 
 ---
 
 ## What This Project Does
 
-* Extracts problem-oriented phrases (e.g., "how to fix X", "why is Y happening")
-* Tracks frequency and engagement over time
-* Identifies emerging or recurring problem patterns
-* Correlates signals across multiple platforms
-* Produces aggregated insights (not raw content)
+- Extracts recurring problem-oriented phrases (e.g., "how to fix X", "why is Y happening")
+- Tracks discussion frequency and engagement patterns
+- Uses external public trend signals to provide additional context around recurring Reddit discussions
+- Identifies emerging or seasonal problem patterns
+- Produces aggregated analytical insights rather than raw content feeds
 
 ---
 
@@ -48,56 +34,98 @@ The system is designed to operate within API usage limits and platform policies.
 
 ```json
 {
-  "topic": "leaking outdoor faucet",
-  "signals": {
-    "reddit": "increasing frequency",
-    "youtube": "high engagement on recent videos",
-    "trends": "seasonal rise"
+  "topic": "toilet running constantly",
+  "reddit_signal": "increasing discussion frequency",
+  "external_context": {
+    "youtube": "higher engagement on recent repair tutorials",
+    "google_trends": "seasonal increase in search interest"
   },
-  "confidence": "high"
+  "interpretation": "possible recurring seasonal maintenance issue"
 }
 ```
 
 ---
 
-## What This Project Does NOT Do
+## Design Principles
 
-* Does not store or redistribute full Reddit posts or comments
-* Does not collect personal user data
-* Does not perform large-scale scraping
-* Does not provide raw data feeds from any platform
-
-All outputs are derived, aggregated insights.
-
----
-
-## Use Cases
-
-* Identifying common DIY and home improvement problems
-* Discovering high-demand "how-to" topics
-* Supporting the creation of more relevant educational content
-* Understanding how problem trends evolve over time
+- Focus on aggregated analytical insights rather than raw content collection
+- Minimize data retention and avoid storing unnecessary user-generated content
+- Operate within public API policies and reasonable request limits
+- Use external public trend signals only to provide additional context around recurring community discussions
 
 ---
 
 ## Project Status
 
-Early-stage development. Initial focus is on:
+Early-stage development.
 
-* Reddit ingestion (limited scope)
-* Basic problem extraction
-* Trend scoring
+Current prototype functionality includes:
 
----
+- YouTube engagement and velocity scoring
+- Google Trends growth analysis
+- Cross-platform trend scoring workflows
+- JSON-based analytical output generation
 
-## Future Directions
-
-* Cross-platform signal correlation
-* Improved topic clustering
-* Optional integration with tools that surface insights back to communities
+Planned future work includes limited Reddit integration focused on lightweight metadata analysis within selected DIY-related communities.
 
 ---
 
-## License
+## Setup
 
-MIT License
+### Requirements
+
+```
+google-api-python-client
+requests
+pandas
+numpy
+python-dotenv
+```
+
+Install with:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Credentials
+
+Create a `.env` file in the project root:
+
+```
+YOUTUBE_API_KEY=your_key_here
+```
+
+- YouTube Data API v3 key — obtain from [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+- Google Trends — no key required
+
+**Never commit your `.env` file.** It is listed in `.gitignore`.
+
+### Running
+
+```bash
+# Activate your environment
+source venv/bin/activate        # macOS/Linux
+.\Scripts\activate              # Windows
+
+# Launch the notebook
+jupyter notebook home_repair_trends.ipynb
+```
+
+---
+
+## Data Sources
+
+| Source | Access | What we collect |
+|---|---|---|
+| YouTube Data API v3 | API key (free tier) | Video metadata, view counts, publish dates |
+| Google Trends | No key required | Relative search interest over time |
+| Reddit | Pending approval | Lightweight discussion metadata |
+
+---
+
+## Notes
+
+- YouTube API free tier allows 10,000 units/day. A full 10-topic run costs approximately 1,010 units.
+- Google Trends requests are rate-limited. The pipeline enforces a configurable sleep between requests (default: 20 seconds).
+- All output is aggregated and analytical. No raw user-generated content is stored.
